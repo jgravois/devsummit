@@ -1,14 +1,14 @@
-<!-- .slide: data-background-size="cover" style="padding-left: 80px" data-background="../..//template/img/2019/devsummit/bg-1.png" -->
+<!-- .slide: data-background-size="cover" style="padding-left: 80px" data-background="../../template/img/2019/devsummit/bg-1.png" -->
 
 <h1 style="text-align: left; font-size: 2em;">Node.js and browser applications </h1>
 <h2 style="text-align: left; font-size: 1.5em;">with ArcGIS REST JS</h2>
   <p style="text-align: left; font-size: .5em;">Daniel Fenton
   <a href="https://github.com/dmfenton" target="_blank">@dmfenton</a></p>
-  <p style="font-size: 1em;">slides: <a href="http://bit.ly/..."><code>http://bit.ly/...</code></a>
+  <p style="font-size: 1em;">slides: <a href="https://bit.ly/2DEpJJj"><code>https://bit.ly/2DEpJJj</code></a>
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-2.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
 
 ## Agenda
 
@@ -19,7 +19,7 @@
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-3.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-3.png" -->
 
 > @esri/arcgis-rest-js helps you talk
 
@@ -29,7 +29,7 @@
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-4.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-4.png" -->
 
 ### Code 🎛
 [github.com/Esri/arcgis-rest-js](https://github.com/Esri/arcgis-rest-js)
@@ -40,7 +40,7 @@
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-5.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-5.png" -->
 
 ### Doc (API Reference/Guides) 📚
 [esri.github.io/arcgis-rest-js](https://esri.github.io/arcgis-rest-js)
@@ -53,7 +53,7 @@
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-6.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-6.png" -->
 
 Vanilla [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
 ```js
@@ -80,7 +80,7 @@ xhr.send(null);
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-2.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
 
 Vanilla [`Fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 ```js
@@ -107,7 +107,7 @@ fetch(url, {
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-3.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-3.png" -->
 
 `@esri/arcgis-rest-js`
 ```js
@@ -124,7 +124,7 @@ request(url)
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-4.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-4.png" -->
 
 ### Value adds
 
@@ -141,7 +141,7 @@ request(url)
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-5.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-5.png" -->
 
 request only expects a url, but exposes requestOptions too.
 ```js
@@ -169,7 +169,7 @@ request(url, {
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-6.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-6.png" -->
 
 the rest of the API builds on top of `request`
 ```js
@@ -197,7 +197,7 @@ geocode("LAX", {
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-2.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
 
 ### Goals
 
@@ -212,7 +212,7 @@ geocode("LAX", {
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-3.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-3.png" -->
 
 ### Disclaimer*
 
@@ -225,7 +225,7 @@ geocode("LAX", {
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-4.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-4.png" -->
 
 ### Comparison
 
@@ -239,7 +239,7 @@ geocode("LAX", {
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-5.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-5.png" -->
 
 ### < 2018 👵 collaborators
 
@@ -249,7 +249,7 @@ geocode("LAX", {
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-6.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-6.png" -->
 
 ### >= 2018 👶 collaborators
 
@@ -264,7 +264,7 @@ geocode("LAX", {
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-2.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
 
 ### since the last talk (on [YouTube](https://www.youtube.com/watch?v=n0WtJPSprqc))...
 * **5** new packages 📦!
@@ -272,7 +272,7 @@ geocode("LAX", {
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-3.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-3.png" -->
 
 ## 👵 packages 📦!
 
@@ -290,7 +290,7 @@ geocode("LAX", {
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-4.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-4.png" -->
 
 ## 👶 packages 📦!
 * `feature-service-admin` / 680 b
@@ -305,7 +305,7 @@ geocode("LAX", {
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-5.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-5.png" -->
 
 ### using the CDN
 
@@ -348,7 +348,7 @@ arcgisRest.deleteFeatures({
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-6.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-6.png" -->
 
 when only **one** piece of information is required
 
@@ -371,7 +371,7 @@ getLayer(url, { httpMethod: "GET" })
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-2.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
 
 if **more** than one piece of information is needed
 
@@ -396,7 +396,7 @@ and that the structure is mostly for TypeScript consumers
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-3.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-3.png" -->
 
 ## Authentication
 
@@ -420,7 +420,7 @@ const enterpriseAuth = new UserSession({
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-4.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-4.png" -->
 
 `UserSession` keeps track of token expiration
 
@@ -441,7 +441,7 @@ request(url, { authentication })
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-5.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-5.png" -->
 
 ```js
 const url = `http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/`;
@@ -462,7 +462,7 @@ request(url, { authentication })
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-6.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-6.png" -->
 
 ## lets make this [Observable](https://beta.observablehq.com/@jgravois/introduction-to-esri-arcgis-rest-js)
 
@@ -475,7 +475,7 @@ request(url, { authentication })
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-2.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
 
 ## Demo
 ### [Feature Service Attachments](https://github.com/Esri/arcgis-rest-js/tree/master/demos/attachments)
@@ -488,7 +488,7 @@ request(url, { authentication })
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-3.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-3.png" -->
 
 ### What's next?
 
@@ -503,8 +503,8 @@ request(url, { authentication })
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-rating.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-rating.png" -->
 
 ---
 
-<!-- .slide: data-background="../..//template/img/2019/devsummit/bg-esri.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-esri.png" -->
