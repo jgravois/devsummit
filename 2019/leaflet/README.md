@@ -6,7 +6,6 @@ get code snippets and iframes to display side by side
 replace labeling and driving directions demos with
   (improved?) VRP demo?
   Leaflet.VectorGrid demo?
-replace old news with highlighting customer contributions
 add section to explain passing through an optional function context
 add section to highlight other things we've been working on like arcgis-rest-request
 
@@ -154,6 +153,20 @@ Note:
 
 ### [`Esri Leaflet`](https://esri.github.io/esri-leaflet) is a plugin
 to make working with the most<br>popular ArcGIS Services a **pleasure**
+
+---
+
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-4.png" -->
+
+### 63 [contributors](https://github.com/Esri/esri-leaflet/graphs/contributors)!
+
+---
+
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-6.png" -->
+
+### 1000+ 🌟s!
+
+![star gazers](star-gazers.png)
 
 ---
 
@@ -391,6 +404,37 @@ custom raster functions are supported
 
 ---
 
+## What about `Tasks`?
+
+```js
+L.esri.query()
+
+L.esri.identifyFeatures()
+
+// plugin
+L.esri.Geocoding.geocode()
+```
+
+---
+
+## [`L.esri.query()`](http://esri.github.io/esri-leaflet/api-reference/tasks/query.html)
+
+[👧 JS](./snippets/query-task.html) / [👵 JS](./snippets/query-task-old.html)
+
+---
+
+and what is _"Accepts an optional function context"_?
+
+[👧 JS](./snippets/query-task.html) / [👵 JS](./snippets/query-task-old.html)
+
+---
+
+* intuitive way to chain API parameters together
+* callback exposes both a raw and massaged response
+
+---
+
+
 <!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
 
 ### more `Esri Leaflet` [plugins](http://esri.github.io/esri-leaflet/plugins)
@@ -412,20 +456,6 @@ custom raster functions are supported
 
 ---
 
-<!-- .slide: data-background="../../template/img/2019/devsummit/bg-4.png" -->
-
-### 63 [contributors](https://github.com/Esri/esri-leaflet/graphs/contributors)!
-
----
-
-<!-- .slide: data-background="../../template/img/2019/devsummit/bg-6.png" -->
-
-### 1000+ 🌟s!
-
-![star gazers](star-gazers.png)
-
----
-
 <!-- .slide: data-background="../../template/img/2019/devsummit/bg-6.png" -->
 
 ## fixes / improvements
@@ -442,30 +472,6 @@ custom raster functions are supported
 to `dynamicMapLayer` and `imageMapLayer`
 
 * [@dangowans](https://github.com/dangowans) added proxy support to `ImageMapLayer`
-
----
-
-<!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
-
-## Lets check out a couple new demos!
-
----
-
-<!-- .slide: data-background="../../template/img/2019/devsummit/bg-3.png" -->
-
-## Find the [Closest Facility](https://johngravois.com/esri-leaflet-gp/closest-facility.html)
-
----
-
-<!-- .slide: data-background="../../template/img/2019/devsummit/bg-4.png" -->
-
-## [Traveling Salesman](https://johngravois.com/esri-leaflet-gp/demos/vrp.html)
-
----
-
-<!-- .slide: data-background="../../template/img/2019/devsummit/bg-5.png" -->
-
-## [LERC](https://github.com/jgravois/lerc-leaflet)
 
 ---
 
@@ -496,7 +502,7 @@ to `dynamicMapLayer` and `imageMapLayer`
 
 <!-- .slide: data-background="../../template/img/2019/devsummit/bg-4.png" -->
 
-[`esri-leaflet-vector`](https://github.com/esri/esri-leaflet-vector) is **not** a production plugin!
+[`esri-leaflet-vector`](https://github.com/esri/esri-leaflet-vector) is **not** mature at all!
 
 ---
 

@@ -1,0 +1,75 @@
+<head>
+  <style>
+    body { margin:0; padding:0; }
+    #mapDiv { position: absolute; top:0; bottom:0; right:0; left:0; }
+    #info-pane {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 400;
+    background: white;
+    padding: 10px;
+  }
+  </style>
+</head>
+<body>
+  <div id="mapDiv"></div>
+  <div id="info-pane" class="leaflet-bar">
+    <p>
+      <span id="summary">? countries are visible</span>
+    </p>
+  </div>
+  <script>
+  const init = () => {
+    const map = L.map("mapDiv").setView([-25, -65], 3);
+    L.esri.basemapLayer("Gray").addTo(map);
+
+    const url = `https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/World_Countries_(Generalized)/FeatureServer/0`;
+
+    const countries = L.esri.featureLayer({ url }).addTo(map);
+
+    // create a task from the featureLayer
+    queryTask = countries.query();
+
+    // each time the map is panned/zoomed, use the current bounds to query for summary stats
+    // https://leafletjs.com/reference-1.4.0.html#map-moveend
+    map.on("moveend", (evt) => {
+      getCountOfVisibleCountries(evt.target.getBounds())
+      // getBoundsOfVisibleCountries(evt.target.getBounds())
+    })
+
+    const getCountOfVisibleCountries = (mapBounds) => {
+      // chain some query parameters together
+      queryTask.intersects(mapBounds)
+      // .where("COUNTRYAFF = 'United States'")
+      queryTask.count((err, count, raw) => {
+        // https://hackernoon.com/javascript-es6-arrow-functions-and-lexical-this-f2a3e2a5e8c4
+
+        // use the count to display informative text in the ui
+        let displayCount;
+        count === 1 ?
+          displayCount = `${count} country is visible`
+        : displayCount = `${count} countries are visible`
+        document.getElementById("summary").innerText = displayCount;
+
+      })
+    }
+
+    const getBoundsOfVisibleCountries = (mapBounds) => {
+      // instead of a count, lets ask for a bbox representing the union of the matching features
+      queryTask
+        .intersects(mapBounds)
+        .bounds((err, bounds, raw) => {
+          document.getElementById("summary").innerText =
+            `furthest north: ${bounds.getNorth()}
+             furthest south: ${bounds.getSouth()}`;
+        })
+    }
+
+    getCountOfVisibleCountries(map.getBounds(), map)
+    // getBoundsOfVisibleCountries(map.getBounds())
+  }
+  </script>
+
+  <script src="./support/snippet.js"></script>
+</body>
