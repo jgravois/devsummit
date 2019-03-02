@@ -12,44 +12,38 @@
 
 ## Agenda
 
-1. 🌐 What is ArcGIS REST JS good for?
-1. 👩‍🚀 Who else is using it? For what?
-1. 📆 What's new in 2019?
-1. 🤹‍ demos/code (to learn how it works)
-
----
-
-<!-- .slide: data-background="../../template/img/2019/devsummit/bg-3.png" -->
-
-> @esri/arcgis-rest-js helps you talk
-
-> to ArcGIS Online and Enterprise
-
-> from modern browsers and Node.js.
+1. 🌐- What is ArcGIS REST JS? Why?
+1. 👩‍🚀- Who else is using it? For what?
+1. 📆- What's new in 2019?
+1. 💯- Common Patterns
+1. 🤹‍- Demos/code (to learn how it works)
 
 ---
 
 <!-- .slide: data-background="../../template/img/2019/devsummit/bg-4.png" -->
 
-### Code 🎛
-[github.com/Esri/arcgis-rest-js](https://github.com/Esri/arcgis-rest-js)
+### Open Source On GitHub
+
+Code 🎛 [github.com/Esri/arcgis-rest-js](https://github.com/Esri/arcgis-rest-js)
+
+Doc 📚 [esri.github.io/arcgis-rest-js](https://esri.github.io/arcgis-rest-js)
 
 <aside class="notes">
   * its an open source thing
+  *  API reference is generated from comments within the code
+  * Guides
+  * pull requests (suggestions, improvements) welcome
 </aside>
 
 ---
 
-<!-- .slide: data-background="../../template/img/2019/devsummit/bg-5.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-3.png" -->
 
-### Doc (API Reference/Guides) 📚
-[esri.github.io/arcgis-rest-js](https://esri.github.io/arcgis-rest-js)
+@esri/arcgis-rest-js helps you talk
 
-<aside class="notes">
-  API reference is generated from comments within the code
-  Guides
-  pull requests (suggestions, improvements) welcome
-</aside>
+to ArcGIS Online and Enterprise
+
+from modern browsers and Node.js.
 
 ---
 
@@ -91,7 +85,7 @@ fetch(url, {
   headers: {
     "Content-Type": "application/x-www-form-urlencoded" // append the right header
   },
-  // concatentate and encode parameters, append f=json
+  // concat and encode parameters, append f=json
   body: encodeURIComponent("f=json")
 }).then(response => {
     if (response.ok) { return response.json() } // dig out the json
@@ -109,12 +103,39 @@ fetch(url, {
 
 <!-- .slide: data-background="../../template/img/2019/devsummit/bg-3.png" -->
 
+# Even more complexity
+
+* What are all the error codes?
+* How do you handle auth?
+* Proper date encoding?
+* Proper encoding for objects?
+* Properly managing tokens for federated servers?
+* Refreshing authentication when necessary?
+
+---
+
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-3.png" -->
+
+<p style="font-size: 400%;">💥</p>
+
+---
+
+
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-3.png" -->
+
 `@esri/arcgis-rest-js`
 ```js
 import { request } from "@esri/arcgis-rest-request";
 
 request(url)
   .then(response) // { firstName: "Daniel", description: "open source geodev" ... }
+  .then((error => {
+    if(err.name === "ArcGISAuthError"){
+      // handle and auth error
+    } else {
+      // handle a regular error
+    }
+  })
 ```
 
 <aside class="notes">
@@ -131,7 +152,9 @@ request(url)
 * appends `f=json` and request headers
 * encodes query string parameters
 * creates `FormData` (when required)
-* throws an error when a `200` response fails
+* clear, informative and easy error handling
+* proper param encoding
+* authentication handling
 * ~~display a map~~
 * ~~clientside analysis~~
 
@@ -143,11 +166,11 @@ request(url)
 
 <!-- .slide: data-background="../../template/img/2019/devsummit/bg-5.png" -->
 
-request only expects a url, but exposes requestOptions too.
+`request` only expects a url, but exposes `requestOptions` too.
 ```js
 // url, IRequestOptions
 request(url, {
-  params: {
+  params: { // any params you want to pass
     foo: true,
     bar: "baz",
     more: File(),
@@ -205,6 +228,7 @@ geocode("LAX", {
 * a la carte / svelte
 * framework agnostic
 * shave down the sharp edges
+* align with JS ecosystem
 
 <aside class="notes">
  originally because PDX was using Angular and Hub was using Ember
