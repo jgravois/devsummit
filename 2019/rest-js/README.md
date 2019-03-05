@@ -2,8 +2,10 @@
 
 <h1 style="text-align: left; font-size: 2em;">Node.js and browser applications </h1>
 <h2 style="text-align: left; font-size: 1.5em;">with ArcGIS REST JS</h2>
-  <p style="text-align: left; font-size: .5em;">Daniel Fenton
-  <a href="https://github.com/dmfenton" target="_blank">@dmfenton</a></p>
+  <p style="text-align: left; font-size: .5em;">Patrick Arlt
+  <a href="https://github.com/patrickarlt" target="_blank">@patrickarlt</a></p>
+  <p style="text-align: left; font-size: .5em;">John Gravois
+  <a href="https://github.com/jgravois" target="_blank">@jgravois</a></p>
   <p style="font-size: 1em;">slides: <a href="https://bit.ly/2DEpJJj"><code>https://bit.ly/2DEpJJj</code></a>
 
 ---
@@ -13,7 +15,7 @@
 ## Agenda
 
 1. 🌐- What is ArcGIS REST JS? Why?
-1. 👩‍🚀- Who else is using it? For what?
+1. 👩‍🚀- Who is using it? For what?
 1. 📆- What's new in 2019?
 1. 💯- Common Patterns
 1. 🤹‍- Demos/code (to learn how it works)
@@ -107,9 +109,9 @@ fetch(url, {
 
 * What are all the error codes?
 * How do you handle auth?
-* Proper date encoding?
+* How are dates supposed to be encoded?
 * Proper encoding for objects?
-* Properly managing tokens for federated servers?
+* How do you manage tokens for federated servers?
 * Refreshing authentication when necessary?
 
 ---
@@ -129,7 +131,7 @@ import { request } from "@esri/arcgis-rest-request";
 
 request(url)
   .then(response) // { firstName: "Daniel", description: "open source geodev" ... }
-  .then((error => {
+  .catch((error => {
     if(err.name === "ArcGISAuthError"){
       // handle and auth error
     } else {
@@ -152,9 +154,9 @@ request(url)
 * appends `f=json` and request headers
 * encodes query string parameters
 * creates `FormData` (when required)
-* clear, informative and easy error handling
-* proper param encoding
-* authentication handling
+* clear and informative error handling
+* proper parameter encoding
+* support for authentication
 * ~~display a map~~
 * ~~clientside analysis~~
 
@@ -166,18 +168,19 @@ request(url)
 
 <!-- .slide: data-background="../../template/img/2019/devsummit/bg-5.png" -->
 
-`request` only expects a url, but exposes `requestOptions` too.
+`request` only expects a url, but it exposes `requestOptions` too.
 ```js
 // url, IRequestOptions
 request(url, {
-  params: { // any params you want to pass
+  params: { // anything you want to pass
     foo: true,
     bar: "baz",
     more: File(),
-    num: 999 // etc.
+    num: 999,
+    when: Date().now() // etc.
   },
-  // authentication
   // httpMethod: "GET",
+  // authentication
   // portal,
   // headers,
   // fetch
@@ -212,10 +215,7 @@ geocode("LAX", {
 ```
 
 <aside class="notes">
-  could you do this without a dependency, yes!
-  but why would you?
-  promise based
-  try to avoid unnecessary GIS jargon
+  you dont have to wait for us to wrap every ArcGIS Online call
 </aside>
 
 ---
@@ -241,7 +241,7 @@ geocode("LAX", {
 ### Disclaimer*
 
 * not a product, no roadmap
-* work in progress
+* work [in progress](https://developers.arcgis.com/rest/)
 * scratching our own itch
 
 <aside class="notes">
@@ -282,9 +282,10 @@ geocode("LAX", {
 * ArcGIS Urban
 * Professional Services
 * ArcGIS Solutions
-* Startups
 * Enterprise (via Hub)
 * Esri UK
+* Startups / Partners
+* ??
 
 ---
 
@@ -308,8 +309,7 @@ geocode("LAX", {
 * `geocoder` / ~~1 kb~~ 990 b
 
 <aside class="notes">
-  compact
-  compact because they are works in progress
+  compact (on purpose and because they are wips)
 </aside>
 
 ---
@@ -329,23 +329,41 @@ geocode("LAX", {
 
 ---
 
-<!-- .slide: data-background="../../template/img/2019/devsummit/bg-5.png" -->
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-6.png" -->
 
-### using the CDN
+when only **one** piece of information is required
 
-```html
-<script src="https://cdn.polyfill.io/v2/polyfill.js?features=es5,Promise,fetch"></script>
-<script src="https://unpkg.com/@esri/arcgis-rest-request"></script>
-<script src="https://unpkg.com/@esri/arcgis-rest-feature-service"></script>
+```js
+import { getLayer } from "@esri/arcgis-rest-feature-service";
 
+const url = `http://services.arcgis.com/.../SF311/FeatureServer/0/deleteFeatures`;
+
+getLayer(url)
+  .then(response) // { name: "311", id: 0, ... }
+
+// or
+getLayer(url, {
+  httpMethod: "GET",
+  authentication // etc.
+})
 ```
+[IRequestOptions](https://esri.github.io/arcgis-rest-js/api/feature-service/getLayer/) still plays second 🎻
+.
+
+<aside class="notes">
+</aside>
+
+---
+
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-4.png" -->
+
+### if **more** than one piece of information is needed
+
 <div class="container">
 
 <div class="col">
   <pre style="width: 500px; margin: 0 auto; box-shadow: none;"><code class="hljs js" style="height: 400px;">
-// arcgisRest.request(url);
-
-arcgisRest.deleteFeatures({
+deleteFeatures({
   url,
   objectIds: [ 123 ]
 })
@@ -366,50 +384,8 @@ arcgisRest.deleteFeatures({
 }
 </code></pre>
 </div>
-
-<aside class="notes">
-</aside>
-
----
-
-<!-- .slide: data-background="../../template/img/2019/devsummit/bg-6.png" -->
-
-when only **one** piece of information is required
-
-```js
-import { getLayer } from "@esri/arcgis-rest-feature-service";
-
-const url = `http://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0/deleteFeatures`;
-
-getLayer(url)
-  .then(response) // { name: "311", id: 0, ... }
-
-// or
-getLayer(url, { httpMethod: "GET" })
-```
-[IRequestOptions](https://esri.github.io/arcgis-rest-js/api/feature-service/getLayer/) plays second 🎻
-.
-
-<aside class="notes">
-</aside>
-
----
-
-<!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
-
-if **more** than one piece of information is needed
-
-```js
-import { setItemAccess } from "@esri/arcgis-rest-sharing";
-
-setItemAccess({
-  id: `fe8`, // which item?
-  access: `public`, // who should be able to see it?
-  authentication // who wants to update?
-})
-  .then(response) //
-```
-we [_extend_](https://esri.github.io/arcgis-rest-js/api/sharing/setItemAccess/) IRequestOptions
+</div>
+only one parameter is exposed and we [_extend_](https://esri.github.io/arcgis-rest-js/api/feature-service/deleteFeatures/) `IRequestOptions`
 <aside class="notes">
 show that this method expects ISetAccessRequestOptions
 this gives a higher level abstraction than just { params }
@@ -417,6 +393,34 @@ admit that required parameters are obscured by optional (and inherited ones)
 remind folks that the code snippet is good enough for most
 and that the structure is mostly for TypeScript consumers
 </aside>
+
+---
+
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
+
+### update who can access an [item](http://edn.maps.arcgis.com/home/item.html?id=d9af3e31a562431988666e86bfc8a0d5)
+
+```js
+import { setItemAccess } from "@esri/arcgis-rest-sharing";
+
+setItemAccess({
+  id: `fe8`, // which item?
+  access: `public`, // who should be able to see it?
+  authentication // user allowed to update
+})
+  .then(response)
+```
+
+[`ISetItemAccessOptions`](https://esri.github.io/arcgis-rest-js/api/sharing/setItemAccess/)
+
+---
+
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-3.png" -->
+
+The DX is simple, even when the underlying logic is [complicated](https://github.com/Esri/arcgis-rest-js/blob/master/packages/arcgis-rest-sharing/src/group-sharing.ts#L74-L161)
+
+* we ensure the response is _deterministic
+* we figure out _which_ url to call (based on role)
 
 ---
 
@@ -439,7 +443,12 @@ const enterpriseAuth = new UserSession({
 ```
 
 <aside class="notes">
-  a token isnt fetched until its time to make a request
+  this in and of itself doesnt fetch a token
+  similar to JSAPI IdentityManager
+    * DOESNT juggle multiple portals
+    * doesnt present a UI to login when an anonymous request fails
+
+  tokens arent fetched until its time to make a request
 </aside>
 
 ---
@@ -453,7 +462,7 @@ const url = `http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/
 
 request(url, { authentication })
   .then(response => {
-    // the new token will be reused for the second request
+    // the same token will be reused for the second request
     request(url, { authentication })
   })
 ```
@@ -478,10 +487,6 @@ request(url, { authentication })
 ```
 
 <aside class="notes">
-  this in and of itself doesnt fetch a token
-  similar to JSAPI IdentityManager
-    * DOESNT juggle multiple portals
-    * doesnt present a UI to login when an anonymous request fails
 </aside>
 
 ---
@@ -491,10 +496,6 @@ request(url, { authentication })
 ## lets make this [Observable](https://beta.observablehq.com/@jgravois/introduction-to-esri-arcgis-rest-js)
 
 <aside class="notes">
-  this in and of itself doesnt fetch a token
-  similar to JSAPI IdentityManager
-    * DOESNT juggle multiple portals
-    * doesnt present a UI to login when an anonymous request fails
 </aside>
 
 ---
@@ -502,12 +503,53 @@ request(url, { authentication })
 <!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
 
 ## Demo
-### [Feature Service Attachments](https://github.com/Esri/arcgis-rest-js/tree/master/demos/attachments)
+### Node.js
 
 <aside class="notes">
   OAuth 2.0
   demo (and API functionality) came from a user
   admit that we should be hosting live demos but for now you have to run them yourself.
+</aside>
+
+---
+
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
+
+## Demo
+### CDN
+
+<aside class="notes">
+</aside>
+
+---
+
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
+
+## Demo
+### [React Component](https://github.com/oppoudel/react-geocoder)
+
+<aside class="notes">
+  geocoding
+</aside>
+
+---
+
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
+
+## Demo
+### Nuxt.js
+
+<aside class="notes">
+</aside>
+
+---
+
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
+
+## Demo
+### [Web Component](https://github.com/esridc/hub-components)
+
+<aside class="notes">
 </aside>
 
 ---
@@ -518,7 +560,7 @@ request(url, { authentication })
 
 * param [builders](https://github.com/Esri/arcgis-rest-js/issues/384)?
 * more hooks to modify fetch behavior
-* selectively [decorating](https://github.com/Esri/arcgis-rest-js/issues/371) responses
+* more [decorated responses](https://github.com/Esri/arcgis-rest-js/issues/371)
 * [`v2.0.0`](https://github.com/Esri/arcgis-rest-js/issues/137)?
 * ??
 
