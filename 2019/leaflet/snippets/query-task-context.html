@@ -37,27 +37,24 @@
 
     // each time the map is panned/zoomed, use the current bounds to query for summary stats
     map.on("moveend", function (evt) {
-      getCountOfVisibleCountries(evt.target.getBounds())
-      // getBoundsOfVisibleCountries(evt.target.getBounds())
+      getBoundsOfVisibleCountries(evt.target.getBounds(), evt.target)
     })
 
-    function getCountOfVisibleCountries (mapBounds) {
-      // chain some query parameters together
-      queryTask.intersects(mapBounds);
-      // queryTask.where("COUNTRYAFF = 'United States'");
-      queryTask.count(function (err, count, raw) {
-        // use the count to display informative text in the ui
-        var displayCount;
-        count === 1 ?
-          displayCount = count + "country is visible"
-        : displayCount = count + "countries are visible"
-        document.getElementById("summary").innerText = displayCount;
-      })
+    function getBoundsOfVisibleCountries (mapBounds, context) {
+      // instead of a count, lets ask for bbox union of the matching features
+      queryTask
+        .intersects(mapBounds)
+        .bounds(function (err, bounds, raw) {
+          // the map (not the Window)
+          console.log(this.getZoom());
+
+          document.getElementById("summary").innerText =
+            "furthest north: " + bounds.getNorth() + "\n" +
+            "furthest south: " + bounds.getSouth();
+        }, context)
     }
 
-
-
-    getCountOfVisibleCountries(map.getBounds())
+    getBoundsOfVisibleCountries(map.getBounds(), map)
   }
   </script>
 

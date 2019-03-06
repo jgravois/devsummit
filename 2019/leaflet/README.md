@@ -417,23 +417,45 @@ L.esri.Geocoding.geocode()
 
 ---
 
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
+
 ## [`L.esri.query()`](http://esri.github.io/esri-leaflet/api-reference/tasks/query.html)
 
 [👧 JS](./snippets/query-task.html) / [👵 JS](./snippets/query-task-old.html)
 
 ---
 
-and what is _"Accepts an optional function context"_?
-
-[👧 JS](./snippets/query-task.html) / [👵 JS](./snippets/query-task-old.html)
-
----
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
 
 * intuitive way to chain API parameters together
 * callback exposes both a raw and massaged response
 
 ---
 
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
+
+and what is _"Accepts an [optional function context](https://github.com/Esri/esri-leaflet-doc/issues/175)"_?
+
+[👵 JS](./snippets/query-task-context.html)
+
+---
+
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
+
+```js
+this.metadata(function (error, metadata) {
+  // ...
+  /* the trailing 'this' helps us get access to the object that called the asynchronous method from within the callback
+  */
+  if (!this.options.attribution && map.attributionControl && metadata.copyrightText) {
+    this.options.attribution = metadata.copyrightText;
+    map.attributionControl.addAttribution(this.getAttribution());
+  }
+  // ...
+}, this);
+```
+
+---
 
 <!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
 
