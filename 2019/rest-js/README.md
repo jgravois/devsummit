@@ -513,7 +513,7 @@ request(url, { authentication })
 <!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
 
 ## Demo
-### Node.js
+### [Node.js](https://github.com/Esri/arcgis-rest-js/tree/master/demos/node-cli-item-management/)
 
 <aside class="notes">
   OAuth 2.0
@@ -537,7 +537,7 @@ request(url, { authentication })
 <!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
 
 ## Demo
-### Nuxt.js
+### [Sapper](https://github.com/Esri/arcgis-rest-js/tree/master/demos/feature-collection-manager-sapper)
 
 <aside class="notes">
 </aside>

@@ -13,11 +13,11 @@
 
 1. What comes in the 📦?
 1. Customizing Hub Sites
-1. Extending ArcGIS Hub
+1. Automating ArcGIS Hub
   * Tools
   * Recommendations
   * Examples
-1. Deploying at scale
+1. Custom Initiative Templates
 
 ---
 

@@ -17,7 +17,7 @@ add section to highlight other things we've been working on like arcgis-rest-req
 
 <h1 style="text-align: left; font-size: 80px;"><i>Building Apps with </i> <b>Esri Leaflet</b></h1>
     <p style="text-align: left; font-size: 1.5em;"><a href="https://github.com/jgravois">@jgravois</a></p>
-    <p style="text-align: left; font-size: 1.5em;">slides: <a href="http://bit.ly/2oQCl7G"><code>http://bit.ly/2oQCl7G</code></a>
+    <p style="text-align: left; font-size: 1.5em;">slides: <a href="https://bit.ly/2C6bWdo"><code>https://bit.ly/2C6bWdo</code></a>
 
 ---
 
