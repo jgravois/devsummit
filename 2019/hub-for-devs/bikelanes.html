@@ -1,0 +1,62 @@
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title>Styling lines</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+    <!-- Load Leaflet from CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+    crossorigin=""></script>
+
+
+    <!-- Load Esri Leaflet from CDN -->
+    <script src="https://unpkg.com/esri-leaflet@2.2.3/dist/esri-leaflet.js"
+    integrity="sha512-YZ6b5bXRVwipfqul5krehD9qlbJzc6KOGXYsDjU9HHXW2gK57xmWl2gU6nAegiErAqFXhygKIsWPKbjLPXVb2g=="
+    crossorigin=""></script>
+
+    <script src="https://unpkg.com/@esri/arcgis-rest-request@1.17.1/dist/umd/request.umd.js"></script>
+    <script src="https://unpkg.com/@esri/arcgis-rest-items@1.17.1/dist/umd/items.umd.js"></script>
+
+  <style>
+    body { margin:0; padding:0; }
+    #map { position: absolute; top:0; bottom:0; right:0; left:0; }
+  </style>
+</head>
+<body>
+
+<style>
+  #info-pane {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 400;
+    padding: 1em;
+    background: white;
+  }
+</style>
+
+<div id="map"></div>
+<div id="info-pane" class="leaflet-bar"></div>
+
+<script type='text/javascript'>
+  var map = L.map('map').setView([45.5275, -122.6717], 14);
+  L.esri.basemapLayer('Streets').addTo(map);
+
+  arcgisRest.getItemData(new URL(window.location.href).searchParams.get("appid"))
+    .then(response => {
+      var bikePaths = L.esri.featureLayer({
+        url: response.values.bikelanes
+      }).addTo(map);
+
+      document.getElementById("info-pane").innerHTML = response.values.orgname;
+      document.title = response.values.orgname;
+    })
+
+</script>
+
+</body>
+</html>
