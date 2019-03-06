@@ -200,8 +200,8 @@ to make working with the most<br>popular ArcGIS Services a **pleasure**
   var url = '//{s}.tile.osm.org/{z}/{x}/{y}.png';
 
   var tiled = L.tileLayer(url, {
-      attribution: '&copy; <a href="http://osm.org/copyright">
-      OpenStreetMap</a> contributors'
+    attribution: '&copy; <a href="http://osm.org/copyright">
+    OpenStreetMap</a> contributors'
   })
 
   tiled.addTo(map);

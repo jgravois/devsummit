@@ -503,12 +503,9 @@ request(url, { authentication })
 <!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
 
 ## Demo
-### Node.js
+### [CDN](../hub-for-devs/bikelanes?appid=172c2e7c09e2452f9819cff6cf69de32)
 
 <aside class="notes">
-  OAuth 2.0
-  demo (and API functionality) came from a user
-  admit that we should be hosting live demos but for now you have to run them yourself.
 </aside>
 
 ---
@@ -516,9 +513,12 @@ request(url, { authentication })
 <!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
 
 ## Demo
-### CDN
+### Node.js
 
 <aside class="notes">
+  OAuth 2.0
+  demo (and API functionality) came from a user
+  admit that we should be hosting live demos but for now you have to run them yourself.
 </aside>
 
 ---
@@ -548,6 +548,17 @@ request(url, { authentication })
 
 ## Demo
 ### [Web Component](https://github.com/esridc/hub-components)
+
+<aside class="notes">
+</aside>
+
+---
+
+<!-- .slide: data-background="../../template/img/2019/devsummit/bg-2.png" -->
+
+## [Lamda Functions](https://medium.com/@adamjpfister/know-your-apis-6dc6ea3d084c)
+
+you get the idea.
 
 <aside class="notes">
 </aside>
