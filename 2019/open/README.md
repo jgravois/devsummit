@@ -24,10 +24,20 @@
 ## Who am i?
 
 1. ☎️- Tech Support
-1. 🐛- Esri Leaflet
-1. 🏗- Terraformer
+1. 🐛- [Esri Leaflet](https://esri.github.io/esri-leaflet/)
+1. 🏗- [Terraformer](http://terraformer.io)
 1. 🖼- LERC
-1. 👩‍🚀- ArcGIS Hub
+1. 👩‍🚀- [ArcGIS Hub](https://hub.arcgis.com)
+
+---
+
+<!-- .slide: data-background="../../template/img/2019/psdw/bg-1.png" -->
+
+`@esri/arcgis-rest-js` helps you talk
+
+to ArcGIS Online and Enterprise
+
+from modern browsers and Node.js.
 
 ---
 
@@ -45,16 +55,6 @@ Doc 📚 [esri.github.io/arcgis-rest-js](https://esri.github.io/arcgis-rest-js)
   * Guides
   * pull requests (suggestions, improvements) welcome
 </aside>
-
----
-
-<!-- .slide: data-background="../../template/img/2019/psdw/bg-1.png" -->
-
-`@esri/arcgis-rest-js` helps you talk
-
-to ArcGIS Online and Enterprise
-
-from modern browsers and Node.js.
 
 ---
 
@@ -593,8 +593,6 @@ function getData(req, callback) {
 
 ---
 
-
-
 <!-- .slide: data-background="../../template/img/2019/psdw/bg-4.png" -->
 
 ### @esri/[react-arcgis](https://github.com/Esri/react-arcgis)
@@ -626,6 +624,22 @@ crs.wkt
 
 ---
 
+<!-- .slide: data-background="../../template/img/2019/psdw/bg-1.png" -->
+
+### [@esri/arcgis-html-sanitizer](https://github.com/Esri/arcgis-html-sanitizer)
+
+```js
+// Sanitize a string
+const sanitizedHtml = sanitizer.sanitize(
+  '<img src="https://example.com/fake-image.jpg" onerror="alert(1);" />'
+);
+```
+
+<aside class="notes">
+</aside>
+
+---
+
 <!-- .slide: data-background="../../template/img/2019/psdw/bg-2.png" -->
 
 ### [i3s](https://github.com/Esri/i3s-spec)-spec/[cim](https://github.com/Esri/cim-spec)-spec
@@ -651,6 +665,15 @@ Lerc.decode(xhrResponse, {
 
 ---
 
+<!-- .slide: data-background="../../template/img/2019/psdw/bg-3.png" -->
+
+### [Esri/Bayview](https://github.com/Esri/bayview)
+
+<aside class="notes">
+</aside>
+
+---
+
 <!-- .slide: data-background="../../template/img/2019/psdw/bg-4.png" -->
 
 ### [geometry-api-java](http://esri.github.io/geometry-api-java/doc/Contains.html)
@@ -667,27 +690,9 @@ static boolean geometryContains(Geometry geometryA, Geometry geometryB, SpatialR
 
 ---
 
-<!-- .slide: data-background="../../template/img/2019/psdw/bg-1.png" -->
-
-### [@esri/arcgis-html-sanitizer](https://github.com/Esri/arcgis-html-sanitizer)
-
-```js
-// Sanitize a string
-const sanitizedHtml = sanitizer.sanitize(
-  '<img src="https://example.com/fake-image.jpg" onerror="alert(1);" />'
-);
-```
-
-<aside class="notes">
-</aside>
-
----
-
 <!-- .slide: data-background="../../template/img/2019/psdw/bg-2.png" -->
 
 ### questions?
 
 <aside class="notes">
 </aside>
-
----
